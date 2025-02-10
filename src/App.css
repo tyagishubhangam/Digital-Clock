@@ -1,0 +1,93 @@
+/* Import a modern digital font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Apply border-box to all elements */
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+.clock-container {
+    height: 100vh;
+    width: 100vw;
+    background-image: url('./assets/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.clock {
+    background: rgba(0, 0, 0, 0.7);
+    padding: clamp(1rem, 5vw, 4rem);
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    width: min(90%, 600px);
+    text-align: center;
+}
+
+#time {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2rem, 8vw, 4rem);
+    color: #00ff88;
+    text-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
+    letter-spacing: 2px;
+    white-space: nowrap;
+    display: block;
+}
+
+/* Add a subtle glow animation */
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
+    }
+    50% {
+        text-shadow: 0 0 30px rgba(0, 255, 136, 0.8);
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
+    }
+}
+
+#time {
+    animation: glow 2s infinite;
+}
+
+/* Media Queries for different screen sizes */
+@media screen and (max-width: 480px) {
+    .clock {
+        padding: 1rem 2rem;
+    }
+    
+    #time {
+        letter-spacing: 1px;
+    }
+}
+
+/* For very small screens */
+@media screen and (max-width: 320px) {
+    .clock {
+        padding: 0.8rem 1.5rem;
+    }
+}
+
+/* For landscape orientation on mobile devices */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .clock {
+        padding: 0.8rem 2rem;
+    }
+    
+    #time {
+        font-size: clamp(1.5rem, 6vw, 3rem);
+    }
+}
